@@ -1,17 +1,24 @@
+import javax.lang.model.type.NullType;
+
 public class MyNode {
     private int value;
     private MyNode next;
-    private int isHead;
+    private MyNode prev;
 
     public MyNode(int num) {
         this.value = num;
         this.next = null;
-        this.isHead = 0;
-
+        this.prev = null;     
     }
 
     void setNext(MyNode n) {
         this.next = n;
+    }
+    void nulNext() {
+        this.next = null;
+    }
+    void setPrev(MyNode n) {
+        this.prev = n;
     }
 
     int getValue() {
@@ -22,7 +29,9 @@ public class MyNode {
         return this.next;
     }
 
-    
+    MyNode getPrev() {
+        return this.prev;
+    }
 
 
 }
