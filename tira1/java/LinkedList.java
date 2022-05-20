@@ -5,7 +5,7 @@ public class LinkedList {
     int count;
 
     public void LinkedList() {
-        
+        this.count = 0;
     }
     
 
@@ -15,7 +15,8 @@ public class LinkedList {
             this.list = new MyNode(num);
             this.last = list;
             this.first = list;
-            this.count = 1;
+            this.count++;
+            System.out.println("count: " + this.count);
 
 
         } else {
@@ -24,6 +25,7 @@ public class LinkedList {
             newnode.setPrev(last);
             this.last = newnode;
             this.count++;
+            System.out.println("count: " + this.count);
 
         }
     }
@@ -51,6 +53,7 @@ public class LinkedList {
                 }
                 break;
             }
+            count--;
             tmp = tmp.getPrev();
         }
     }
@@ -65,6 +68,7 @@ public class LinkedList {
         tmp.nulNext();
         last = tmp;
         this.count--;
+
         return ret;
         
     }
@@ -73,16 +77,28 @@ public class LinkedList {
         int ret = (int) Integer.MIN_VALUE;
         if (first != null) {
             ret = first.getValue();
-            MyNode next = first.getNext();
-            next.nulPrev();
-            list = next;
-            first = next;
+            if (first.getNext() != null) {
+                MyNode next = first.getNext();
+                next.nulPrev();
+                list = next;
+                first = next;
+                this.count--;    
+            } else {
+                this.last = null;
+                this.first = null;
+                this.list = null;
+                this.count--;               
+            }
+
         }
-        this.count--;
         return ret;
     }
 
     private void printList() {
+        if (list == null) {
+            System.out.println("Empty list, count: " + this.count);
+            return;
+        }
         MyNode tmp = list;
         System.out.println("First value: " + first.getValue() +  " Last value: " + last.getValue());
 
@@ -120,6 +136,25 @@ public class LinkedList {
         list.printList();
         System.out.println("Dequeued: " + list.dequeue());
         list.printList();
+        list.dequeue();
+        list.dequeue();
+        list.dequeue();
+        list.dequeue();
+        list.dequeue();
+        list.printList();
+        list.push(5);
+        list.push(355);
+        list.pop();
+        list.printList();
+        list.add(3453);
+        list.printList();
+        System.out.println("Dequequed: " + list.dequeue());
+        System.out.println("Dequequed: " + list.dequeue());
+        System.out.println("Dequequed: " + list.dequeue());
+        System.out.println("Popped: " + list.pop());
+
+
+
     }
 
 }
