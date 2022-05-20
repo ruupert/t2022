@@ -1,7 +1,7 @@
 public class LinkedList {
-    private MyNode list;
-    private MyNode last;
-    private MyNode first;
+    protected MyNode list;
+    protected MyNode last;
+    protected  MyNode first;
     int count;
 
     public void LinkedList() {
@@ -10,7 +10,7 @@ public class LinkedList {
     
 
     // push or enqueue or add to list.
-    private void add(int num) {
+    protected void add(int num) {
         if (list == null) {
             this.list = new MyNode(num);
             this.last = list;
@@ -30,12 +30,7 @@ public class LinkedList {
         }
     }
 
-    void push(int num) {
-        this.add(num);
-    }
-    void enqueue(int num) {
-        this.add(num);
-    }
+
 
     void del(int value) {
         MyNode tmp = last;
@@ -59,42 +54,8 @@ public class LinkedList {
     }
 
 
-    int pop() {
-        if (this.count <= 0) {
-            return (int) Integer.MIN_VALUE;
-        }
-        int ret = last.getPrev().getValue();
-        MyNode tmp = last.getPrev();
-        tmp.nulNext();
-        last = tmp;
-        this.count--;
 
-        return ret;
-        
-    }
-
-    int dequeue() {
-        int ret = (int) Integer.MIN_VALUE;
-        if (first != null) {
-            ret = first.getValue();
-            if (first.getNext() != null) {
-                MyNode next = first.getNext();
-                next.nulPrev();
-                list = next;
-                first = next;
-                this.count--;    
-            } else {
-                this.last = null;
-                this.first = null;
-                this.list = null;
-                this.count--;               
-            }
-
-        }
-        return ret;
-    }
-
-    private void printList() {
+    protected void printList() {
         if (list == null) {
             System.out.println("Empty list, count: " + this.count);
             return;
@@ -121,7 +82,7 @@ public class LinkedList {
         list.add(56);
         list.add(46);
         list.add(36);
-
+/*
         list.add(66);
         list.printList();
 
@@ -152,7 +113,7 @@ public class LinkedList {
         System.out.println("Dequequed: " + list.dequeue());
         System.out.println("Dequequed: " + list.dequeue());
         System.out.println("Popped: " + list.pop());
-
+*/
 
 
     }
