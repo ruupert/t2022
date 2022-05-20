@@ -8,7 +8,9 @@ public class LinkedList {
         
     }
     
-    void add(int num) {
+
+    // push or enqueue or add to list.
+    private void add(int num) {
         if (list == null) {
             this.list = new MyNode(num);
             this.last = list;
@@ -24,6 +26,13 @@ public class LinkedList {
             this.count++;
 
         }
+    }
+
+    void push(int num) {
+        this.add(num);
+    }
+    void enqueue(int num) {
+        this.add(num);
     }
 
     void del(int value) {
@@ -46,7 +55,8 @@ public class LinkedList {
         }
     }
 
-    int popLast() {
+
+    int pop() {
         if (this.count <= 0) {
             return (int) Integer.MIN_VALUE;
         }
@@ -59,6 +69,18 @@ public class LinkedList {
         
     }
 
+    int dequeue() {
+        int ret = (int) Integer.MIN_VALUE;
+        if (first != null) {
+            ret = first.getValue();
+            MyNode next = first.getNext();
+            next.nulPrev();
+            list = next;
+            first = next;
+        }
+        this.count--;
+        return ret;
+    }
 
     private void printList() {
         MyNode tmp = list;
@@ -89,7 +111,14 @@ public class LinkedList {
 
         list.del(36);
         list.printList();
-        System.out.println("popped out:" + list.popLast());
+        System.out.println("Popped out:" + list.pop());
+        list.printList();
+        list.add(66);
+        list.add(34);
+        list.add(22);
+        list.add(11);
+        list.printList();
+        System.out.println("Dequeued: " + list.dequeue());
         list.printList();
     }
 

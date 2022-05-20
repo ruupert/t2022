@@ -17,6 +17,9 @@ public class MyNode {
     void nulNext() {
         this.next = null;
     }
+    void nulPrev() {
+        this.prev = null;
+    }    
     void setPrev(MyNode n) {
         this.prev = n;
     }
