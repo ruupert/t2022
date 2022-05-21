@@ -1,4 +1,4 @@
-public class QueueWithStack {
+public class QueueWithStack implements QueueInterface{
     int count;
     StackWithArray a;
     StackWithArray b;
@@ -12,16 +12,16 @@ public class QueueWithStack {
 
     }
 
-    private void enqueue(int val) {
+    public void enqueue(int value) {
         while (b.isEmpty() == false) {
             a.push(b.pop());
         }
-        a.push(val);
+        a.push(value);
         count++;
 
     }
 
-    private int dequeue() {
+    public int dequeue() {
         while(a.isEmpty() == false ) {
             b.push(a.pop());
         }
@@ -48,6 +48,15 @@ public class QueueWithStack {
 
 
         
+    }
+
+    @Override
+    public Boolean isEmpty() {
+        if (count == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     

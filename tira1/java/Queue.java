@@ -1,10 +1,12 @@
-public class Queue extends LinkedList {
-    void enqueue(int num) {
-        this.add(num);
+public class Queue extends MyLinkedList implements QueueInterface {
+
+    
+    public void enqueue(int value) {
+        this.add(value);
     }
 
 
-    int dequeue() {
+    public int dequeue() {
         int ret = (int) Integer.MIN_VALUE;
         if (first != null) {
             ret = first.getValue();
@@ -34,6 +36,16 @@ public class Queue extends LinkedList {
         n.printList();
 
 
+    }
+
+
+    @Override
+    public Boolean isEmpty() {
+        if (this.count == 0) {
+            return true;
+        } else  {
+            return false;
+        }
     }
 
 }

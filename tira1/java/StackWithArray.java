@@ -1,4 +1,4 @@
-public class StackWithArray {
+public class StackWithArray implements StackInterface {
     int[] stack;
     int pointer;
 
@@ -8,7 +8,7 @@ public class StackWithArray {
         pointer = -1;
     }
 
-    Boolean isEmpty() {
+    public Boolean isEmpty() {
         if (pointer == -1 ) {
             return true;
         } else {
@@ -25,7 +25,7 @@ public class StackWithArray {
         stack = newarr;
     }
 
-    void push(int val) {
+    public void push(int val) {
         pointer++;
         try {
             stack[pointer] = val;
@@ -36,7 +36,7 @@ public class StackWithArray {
         }
     }
     
-    int pop() {
+    public int pop() {
         if (pointer <= -1) {
             return (int) Integer.MIN_VALUE;
         } else {
@@ -84,5 +84,15 @@ public class StackWithArray {
             
         }
 
+    }
+
+    @Override
+    public int peek() {
+        return stack[pointer];
+    }
+
+    @Override
+    public int size() {
+        return pointer +1;
     }
 }

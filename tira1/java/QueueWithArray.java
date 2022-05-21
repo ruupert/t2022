@@ -1,4 +1,4 @@
-public class QueueWithArray {
+public class QueueWithArray implements QueueInterface {
     int[] queue;
     int head;
     int tail;
@@ -11,25 +11,34 @@ public class QueueWithArray {
 
     private void upSize() {
         int[] tmp = new int[queue.length*2];
-        for (int i = tail; i <= head; i++) {
+        for (int i = tail; i < head; i++) {
             tmp[i] = queue[i];           
         }
         queue=tmp;
     }
 
-    private void enqueue(int val) {
+    public void enqueue(int value) {
         if (head == queue.length-1 ) {
             upSize();
         }
-        queue[head] = val;    
+        queue[head] = value;    
         head++;
 
     }
 
-    private int dequeue() {
+    public int dequeue() {
         int ret = queue[tail];
         tail++;
         return ret;
+    }
+
+    public Boolean isEmpty() {
+        System.out.println("head ("+head +") minus tail ("+tail+") equals: " + (head-tail) );
+        if (head-tail == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
@@ -46,5 +55,6 @@ public class QueueWithArray {
         System.out.println("Should be twenty four " + q.dequeue());
 
     }
+
     
 }

@@ -1,4 +1,4 @@
-public class Stack extends LinkedList {
+public class StackWithMyLinkedList extends MyLinkedList {
     
     void push(int num) {
         this.add(num);
@@ -19,7 +19,7 @@ public class Stack extends LinkedList {
     }
 
     public static void main(String[] args) {
-        Stack s = new Stack();
+        StackWithMyLinkedList s = new StackWithMyLinkedList();
         s.push(5);
         s.push(54);
         s.printList();

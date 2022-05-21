@@ -1,4 +1,4 @@
-public class LinkedList {
+public class MyLinkedList {
     protected MyNode list;
     protected MyNode last;
     protected  MyNode first;
@@ -78,7 +78,7 @@ public class LinkedList {
 
 
     public static void main(String[] s) {
-        LinkedList list = new LinkedList();
+        MyLinkedList list = new MyLinkedList();
         list.add(56);
         list.add(46);
         list.add(36);
@@ -116,6 +116,18 @@ public class LinkedList {
 */
 
 
+    }
+
+
+    public Boolean find(int value) {
+        MyNode tmp = this.list;
+        Boolean ret = false;
+        while(tmp.getNext() != null) {
+            if (tmp.getValue() == value) {
+                ret = true;
+            }
+        }
+        return ret;
     }
 
 }
