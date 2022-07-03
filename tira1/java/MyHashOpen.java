@@ -16,8 +16,9 @@ public class MyHashOpen {
     }
 
     private void h(int value, int tries) {
-        System.out.println(tries);
         if (arr[hashFunc(value,tries)] == null && cleared[hashFunc(value,tries)] == null) {
+            System.out.println(tries + " tries for value " + value);
+
             arr[hashFunc(value,tries)] = value;
             return;
         } else {
@@ -27,6 +28,25 @@ public class MyHashOpen {
 
     public void add(int value) {
         h(value, 0);
+    }
+
+
+    public boolean get(int value) {
+        int tries = 0;
+        while(arr[hashFunc(value, tries)] != null) {
+            if (arr[hashFunc(value,tries)] == value) {
+                return true;
+            }
+
+            if (arr[hashFunc(value,tries)] != value && cleared[hashFunc(value, tries)] != null)  {
+                tries += 1; 
+            } else {
+                return false;
+            }
+
+        
+        }        
+        return false;
     }
 
 
@@ -61,7 +81,14 @@ public class MyHashOpen {
         h.add(35);
         h.add(62);
 
+
+
         h.printHashTable();
 
+        System.out.println("Found 42: " + h.get(42));
+        System.out.println("Found 41 " + h.get(41));
+
+
+        
     }
 }
